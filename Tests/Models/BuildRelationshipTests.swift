@@ -23,7 +23,10 @@ final class BuildRelationshipTests: XCTestCase {
         let allCases = [
             BuildRelationship.app(.test),
             BuildRelationship.betaTester(.test),
-            BuildRelationship.build(.test)
+            BuildRelationship.build(.test),
+            BuildRelationship.betaAppReviewDetail(.test),
+            BuildRelationship.buildBetaDetail(.test),
+            BuildRelationship.preReleaseVersion(.test)
         ]
         for relationship in allCases {
             let encoded = try? encoder.encode(relationship)

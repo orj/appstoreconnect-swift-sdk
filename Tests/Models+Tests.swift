@@ -84,3 +84,11 @@ extension BetaTester {
         relationships: nil,
         links: .test)
 }
+
+extension BuildBetaDetail {
+    static var test = BuildBetaDetail(
+        attributes: nil,
+        id: "id",
+        relationships: nil,
+        links: .test)
+}
