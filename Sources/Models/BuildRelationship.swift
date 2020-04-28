@@ -20,7 +20,7 @@ public enum BuildRelationship: Codable {
         case type
     }
     enum CodingKeys: String, Decodable, CodingKey {
-        case apps, builds, betaTesters, betaAppReviewDetails,buildBetaDetails, preReleaseVersions, betaAppReviewSubmissions
+        case apps, builds, betaTesters, betaAppReviewDetails, buildBetaDetails, preReleaseVersions, betaAppReviewSubmissions
     }
 
     public init(from decoder: Decoder) throws {
