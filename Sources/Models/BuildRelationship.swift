@@ -14,12 +14,13 @@ public enum BuildRelationship: Codable {
     case betaAppReviewDetail(BetaAppReviewDetail)
     case buildBetaDetail(BuildBetaDetail)
     case preReleaseVersion(PrereleaseVersion)
+    case betaAppReviewSubmission(BetaAppReviewSubmission)
 
     enum TypeKeys: String, CodingKey {
         case type
     }
     enum CodingKeys: String, Decodable, CodingKey {
-        case apps, builds, betaTesters, betaAppReviewDetails,buildBetaDetails, preReleaseVersions
+        case apps, builds, betaTesters, betaAppReviewDetails,buildBetaDetails, preReleaseVersions, betaAppReviewSubmissions
     }
 
     public init(from decoder: Decoder) throws {
@@ -36,6 +37,8 @@ public enum BuildRelationship: Codable {
           self = try .buildBetaDetail(BuildBetaDetail(from: decoder))
         case .preReleaseVersions:
           self = try .preReleaseVersion(PrereleaseVersion(from: decoder))
+        case .betaAppReviewSubmissions:
+          self = try .betaAppReviewSubmission(BetaAppReviewSubmission(from: decoder))
         }
     }
     
@@ -52,6 +55,8 @@ public enum BuildRelationship: Codable {
         case .buildBetaDetail(let value):
           try value.encode(to: encoder)
         case .preReleaseVersion(let value):
+          try value.encode(to: encoder)
+        case .betaAppReviewSubmission(let value):
           try value.encode(to: encoder)
         }
     }

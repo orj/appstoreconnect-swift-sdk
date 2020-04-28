@@ -92,3 +92,11 @@ extension BuildBetaDetail {
         relationships: nil,
         links: .test)
 }
+
+extension BetaAppReviewSubmission {
+    static var test = BetaAppReviewSubmission(
+        attributes: nil,
+        id: "id",
+        links: .test,
+        relationships: nil)
+}
