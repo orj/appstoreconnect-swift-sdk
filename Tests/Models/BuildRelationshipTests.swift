@@ -27,7 +27,8 @@ final class BuildRelationshipTests: XCTestCase {
             BuildRelationship.betaAppReviewDetail(.test),
             BuildRelationship.buildBetaDetail(.test),
             BuildRelationship.preReleaseVersion(.test),
-            BuildRelationship.betaAppReviewSubmission(.test)
+            BuildRelationship.betaAppReviewSubmission(.test),
+            BuildRelationship.betaGroup(.test)
         ]
         for relationship in allCases {
             let encoded = try? encoder.encode(relationship)
