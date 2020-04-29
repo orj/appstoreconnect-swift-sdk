@@ -15,12 +15,13 @@ public enum BuildRelationship: Codable {
     case buildBetaDetail(BuildBetaDetail)
     case preReleaseVersion(PrereleaseVersion)
     case betaAppReviewSubmission(BetaAppReviewSubmission)
+    case betaGroup(BetaGroup)
 
     enum TypeKeys: String, CodingKey {
         case type
     }
     enum CodingKeys: String, Decodable, CodingKey {
-        case apps, builds, betaTesters, betaAppReviewDetails, buildBetaDetails, preReleaseVersions, betaAppReviewSubmissions
+        case apps, builds, betaTesters, betaGroups, betaAppReviewDetails, buildBetaDetails, preReleaseVersions, betaAppReviewSubmissions
     }
 
     public init(from decoder: Decoder) throws {
@@ -32,13 +33,15 @@ public enum BuildRelationship: Codable {
         case .betaTesters:
             self = try .betaTester(BetaTester(from: decoder))
         case .betaAppReviewDetails:
-          self = try .betaAppReviewDetail(BetaAppReviewDetail(from: decoder))
+            self = try .betaAppReviewDetail(BetaAppReviewDetail(from: decoder))
         case .buildBetaDetails:
-          self = try .buildBetaDetail(BuildBetaDetail(from: decoder))
+            self = try .buildBetaDetail(BuildBetaDetail(from: decoder))
         case .preReleaseVersions:
-          self = try .preReleaseVersion(PrereleaseVersion(from: decoder))
+            self = try .preReleaseVersion(PrereleaseVersion(from: decoder))
         case .betaAppReviewSubmissions:
-          self = try .betaAppReviewSubmission(BetaAppReviewSubmission(from: decoder))
+            self = try .betaAppReviewSubmission(BetaAppReviewSubmission(from: decoder))
+        case .betaGroups:
+            self = try .betaGroup(BetaGroup(from: decoder))
         }
     }
     
@@ -51,13 +54,15 @@ public enum BuildRelationship: Codable {
         case .betaTester(let value):
             try value.encode(to: encoder)
         case .betaAppReviewDetail(let value):
-          try value.encode(to: encoder)
+            try value.encode(to: encoder)
         case .buildBetaDetail(let value):
-          try value.encode(to: encoder)
+            try value.encode(to: encoder)
         case .preReleaseVersion(let value):
-          try value.encode(to: encoder)
+            try value.encode(to: encoder)
         case .betaAppReviewSubmission(let value):
-          try value.encode(to: encoder)
+            try value.encode(to: encoder)
+        case .betaGroup(let value):
+            try value.encode(to: encoder)
         }
     }
 }
