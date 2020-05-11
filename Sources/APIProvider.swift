@@ -146,6 +146,20 @@ public final class APIProvider {
 
         requestExecutor.retrieve(resourceLinks.`self`) { completion(self.mapResponse($0)) }
     }
+
+    /// Performs a data request to the given URL
+    ///
+    /// - Parameters:
+    ///   - url: The URL to request.
+    ///   - completion: The completion callback which will be called on completion containing the result.
+    public func request<T: Decodable>(_ url: URL, T: T.Type, completion: @escaping RequestCompletionHandler<T>) {
+        guard let request = try? requestsAuthenticator.adapt(URLRequest(url: url)) else {
+            completion(.failure(Error.requestGeneration))
+            return
+        }
+
+        requestExecutor.execute(request) { completion(self.mapResponse($0)) }
+    }
 }
 
 // MARK: - Private
